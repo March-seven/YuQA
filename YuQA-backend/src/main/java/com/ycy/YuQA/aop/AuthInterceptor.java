@@ -20,8 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 权限校验 AOP
  *
- * @author <a href="https://github.com/liycy">程序员ycy</a>
- * @from <a href="https://ycy.icu">编程导航知识星球</a>
+  * 
  */
 @Aspect
 @Component
