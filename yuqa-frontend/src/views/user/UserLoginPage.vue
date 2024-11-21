@@ -12,15 +12,29 @@
         <a-input v-model="form.userAccount" placeholder="请输入账号" />
       </a-form-item>
       <a-form-item field="userPassword" tooltip="密码不小于 8 位" label="密码">
-        <a-input v-model="form.userPassword" placeholder="请输入密码" />
+        <a-input-password
+          v-model="form.userPassword"
+          placeholder="请输入密码"
+        />
       </a-form-item>
       <a-form-item field="isRead">
         <a-checkbox v-model="form.isRead"> I have read the manual </a-checkbox>
       </a-form-item>
+
+      <!--      <a href="/UserRegisterPage">新用户注册</a>-->
       <a-form-item>
-        <a-button type="primary" html-type="submit" style="width: 120px">
-          登入
-        </a-button>
+        <div style="display: flex; justify-content: space-between; width: 100%">
+          <a-button type="primary" html-type="submit" style="width: 120px">
+            登录
+          </a-button>
+          <a-button
+            @click="goToRegisterPage"
+            type="primary"
+            style="width: 120px"
+          >
+            注册
+          </a-button>
+        </div>
       </a-form-item>
     </a-form>
     <!--    {{ form }}-->
@@ -59,5 +73,12 @@ const handleSubmit = async () => {
   } else {
     message.error("登入失败," + res.data.message);
   }
+};
+
+const goToRegisterPage = () => {
+  router.push({
+    path: "/user/register",
+    replace: true,
+  });
 };
 </script>

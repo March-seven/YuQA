@@ -36,6 +36,7 @@ myAxios.interceptors.response.use(
         window.location.href = `/user/login?redirect=${window.location.href}`;
       }
     }
+
     return response;
   },
   function (error) {
