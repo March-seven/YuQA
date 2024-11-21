@@ -71,6 +71,12 @@
         </template>
       </a-image>
     </template>
+    <template #createTime="{ record }">
+      {{ dayjs(record.createTime).format("YYYY-MM-DD HH:mm:ss") }}
+    </template>
+    <template #updateTime="{ record }">
+      {{ dayjs(record.updateTime).format("YYYY-MM-DD HH:mm:ss") }}
+    </template>
     <template #optional="{ record }">
       <a-space>
         <a-button status="danger" @click="doDelete(record)">删除</a-button>
@@ -92,6 +98,7 @@ import {
   IconDownload,
   IconInfoCircle,
 } from "@arco-design/web-vue/es/icon";
+import dayjs from "dayjs";
 
 const formSearchParams = ref<API.UserQueryRequest>({});
 
