@@ -21,7 +21,6 @@
         <a-checkbox v-model="form.isRead"> I have read the manual </a-checkbox>
       </a-form-item>
 
-      <!--      <a href="/UserRegisterPage">新用户注册</a>-->
       <a-form-item>
         <div style="display: flex; justify-content: space-between; width: 100%">
           <a-button type="primary" html-type="submit" style="width: 120px">

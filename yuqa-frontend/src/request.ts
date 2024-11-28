@@ -3,7 +3,7 @@ import { Message } from "@arco-design/web-vue";
 
 const myAxios = axios.create({
   baseURL: "http://localhost:8101",
-  timeout: 10000,
+  timeout: 60000,
   withCredentials: true,
 });
 
@@ -42,6 +42,7 @@ myAxios.interceptors.response.use(
   function (error) {
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
+    console.log("我触发了");
     return Promise.reject(error);
   }
 );

@@ -12,9 +12,15 @@
         {{ appId }}
       </a-form-item>
       <a-form-item label="题目列表" :content-flex="false" :merge-props="false">
-        <a-button @click="addQuestion(questionContent.length)">
-          底部添加题目
-        </a-button>
+        <a-space size="medium">
+          <a-button @click="addQuestion(questionContent.length)">
+            底部添加题目
+          </a-button>
+          <AiGenerateQuestionDrawer
+            :appId="appId"
+            :onSuccess="onAiGenerateSuccess"
+          />
+        </a-space>
         <div v-for="(question, index) in questionContent" :key="index">
           <a-space size="large">
             <h3>题目{{ index + 1 }}</h3>
@@ -106,6 +112,7 @@ import {
   editQuestionUsingPost,
   listQuestionVoByPageUsingPost,
 } from "@/api/questionController";
+import AiGenerateQuestionDrawer from "@/views/add/components/AiGenerateQuestionDrawer.vue";
 
 interface Props {
   appId: string;
@@ -227,5 +234,10 @@ const handleSubmit = async () => {
   } else {
     message.error("操作失败，" + res.data.message);
   }
+};
+
+//AI生成题目成功后执行
+const onAiGenerateSuccess = (result: API.QuestionContentDTO[]) => {
+  questionContent.value = [...questionContent.value, ...result];
 };
 </script>
