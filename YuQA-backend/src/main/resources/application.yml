@@ -73,3 +73,6 @@ knife4j:
         api-rule: package
         api-rule-resources:
           - com.ycy.YuQA.controller
+# AI 配置
+ai:
+  apiKey: 51a6cbe865d135b9fc9570fcdcb41c05.48eAemfhStYStdpB
