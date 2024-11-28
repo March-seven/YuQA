@@ -238,6 +238,7 @@ const handleSubmit = async () => {
 
 //AI生成题目成功后执行
 const onAiGenerateSuccess = (result: API.QuestionContentDTO[]) => {
+  message.success(`AI生成题目成功，生成${result.length} 道题目`);
   questionContent.value = [...questionContent.value, ...result];
 };
 </script>
