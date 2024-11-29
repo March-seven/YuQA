@@ -88,11 +88,11 @@ public class UserAnswerController {
         long newUserAnswerId = userAnswer.getId();
 
         // 调用评分模块
-
         try {
-            UserAnswer newUserAnswerWithResult = scoringStrategyExecutor.doScore(choices, app);
-            newUserAnswerWithResult.setId(newUserAnswerId);
-            userAnswerService.updateById(newUserAnswerWithResult);
+            UserAnswer userAnswerWithResult = scoringStrategyExecutor.doScore(choices, app);
+            userAnswerWithResult.setId(newUserAnswerId);
+            userAnswerWithResult.setAppId(null);
+            userAnswerService.updateById(userAnswerWithResult);
         } catch (Exception e) {
             e.printStackTrace();
             throw new BusinessException(ErrorCode.OPERATION_ERROR,"评分错误");
