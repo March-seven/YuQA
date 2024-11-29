@@ -34,8 +34,6 @@ import java.util.List;
 /**
  * 用户答案接口
  *
- * @author <a href="https://github.com/liycy">程序员ycy</a>
- * @from <a href="https://www.code-nav.cn">编程导航学习圈</a>
  */
 @RestController
 @RequestMapping("/userAnswer")

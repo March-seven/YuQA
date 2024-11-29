@@ -28,11 +28,12 @@
           <a-button
             type="primary"
             v-if="current === questionContent.length"
+            :loading="submitLoading"
             circle
             :disabled="!currentAnswer"
             @click="doSubmit"
           >
-            查看结果
+            {{ submitLoading ? "评分中" : "查看结果" }}
           </a-button>
           <a-button v-if="current > 1" circle @click="current -= 1">
             上一题
@@ -145,6 +146,7 @@ const doRadioChange = (value: string) => {
   answerList[current.value - 1] = value;
 };
 
+let submitLoading = ref(false);
 /**
  * 提交
  */
@@ -152,6 +154,7 @@ const doSubmit = async () => {
   if (!props.appId || !answerList) {
     return;
   }
+  submitLoading.value = true;
   const res = await addUserAnswerUsingPost({
     appId: props.appId as any,
     choices: answerList,
@@ -161,5 +164,6 @@ const doSubmit = async () => {
   } else {
     message.error("提交答案失败，" + res.data.message);
   }
+  submitLoading.value = false;
 };
 </script>
